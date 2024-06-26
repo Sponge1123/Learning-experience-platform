@@ -1,0 +1,38 @@
+server:
+  port: 7777
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+
+mybatis-plus:
+  configuration:
+#    map-underscore-to-camel-case: false
+    #配置日志输出(当前配置的是默认的控制台输出)
+    log-impl:
+     org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+
+
+logging:
+  file:
+    name: myBlog.log
+  level:
+    root: info
+
+
+swaggerPath: /webjars/**,/swagger-resources/**,/*/api-docs/**,/swagger-ui.html,/doc.html,/v2/api-docs/**
